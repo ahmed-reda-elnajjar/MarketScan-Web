@@ -32,32 +32,31 @@
         ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-track { background: transparent; }
         ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+        
+        .animate-fade-in { animation: fadeIn 0.5s ease-out forwards; } 
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
-<body class="antialiased h-screen flex flex-col">
+<body class="antialiased h-screen flex flex-col relative">
 
-    <!-- HEADER -->
-    <header class="bg-white border-b border-slate-200 sticky top-0 z-50">
+    <header class="bg-white border-b border-slate-200 sticky top-0 z-40">
         <div class="max-w-[1400px] mx-auto px-6 h-20 flex items-center justify-between">
-            <!-- Logo -->
             <div class="flex items-center gap-3">
                 <div class="bg-blue-600 text-white w-10 h-10 rounded-xl flex items-center justify-center text-xl shadow-lg shadow-blue-200">
-                    <i class="fas fa-map-marker-alt"></i>
+                    <i class="fas fa-bolt"></i>
                 </div>
                 <div>
-                    <h1 class="font-black text-xl tracking-tight text-slate-900 leading-none">MarketScan <span class="text-blue-600">Pro</span></h1>
+                    <h1 class="font-black text-xl tracking-tight text-slate-900 leading-none italic">MarketScan <span class="text-blue-600">Pro</span></h1>
                     <p class="text-[10px] font-bold text-slate-400 tracking-widest uppercase mt-0.5">Graduation Project 2025</p>
                 </div>
             </div>
 
-            <!-- Role Switcher Tabs -->
             <div class="hidden md:flex items-center bg-slate-100 p-1.5 rounded-full border border-slate-200 shadow-sm">
                 <button onclick="switchTab('shopper')" id="tab-shopper" class="tab-btn px-6 py-2 rounded-full text-xs font-bold uppercase tracking-widest transition-all bg-white text-blue-600 shadow-sm">Shopper</button>
                 <button onclick="switchTab('employee')" id="tab-employee" class="tab-btn px-6 py-2 rounded-full text-xs font-bold uppercase tracking-widest transition-all text-slate-500 hover:text-slate-700">Employee</button>
                 <button onclick="switchTab('manager')" id="tab-manager" class="tab-btn px-6 py-2 rounded-full text-xs font-bold uppercase tracking-widest transition-all text-slate-500 hover:text-slate-700">Manager</button>
             </div>
 
-            <!-- User Profile -->
             <div class="flex items-center gap-3">
                 <div class="text-right hidden sm:block">
                     <p class="text-sm font-bold text-slate-800 leading-none">Ahmed Gamal</p>
@@ -68,16 +67,11 @@
         </div>
     </header>
 
-    <!-- MAIN CONTENT -->
     <main class="flex-1 overflow-y-auto p-6 md:p-8">
         <div class="max-w-[1400px] mx-auto">
 
-            <!-- ========================================== -->
-            <!-- 1. SHOPPER VIEW -->
-            <!-- ========================================== -->
             <div id="view-shopper" class="space-y-6 animate-fade-in">
                 
-                <!-- Hero Search -->
                 <div class="bg-white rounded-[32px] p-8 md:p-12 border border-slate-200 shadow-sm relative overflow-hidden flex flex-col md:flex-row items-center justify-between">
                     <div class="relative z-10 w-full max-w-2xl">
                         <h2 class="text-4xl md:text-5xl font-black text-slate-900 mb-2 tracking-tight">Find any item</h2>
@@ -92,26 +86,15 @@
                             <button class="bg-[#0f172a] text-white px-8 py-4 rounded-2xl font-bold text-sm hover:bg-slate-800 transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5 whitespace-nowrap">Ask AI</button>
                         </div>
                     </div>
-                    <!-- Abstract Background Graphic -->
-                    <div class="hidden md:block absolute right-0 top-0 bottom-0 w-1/3 opacity-5 pointer-events-none">
-                        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-                            <path fill="#0f172a" d="M44.7,-76.4C58.3,-69.2,70.1,-58.1,78.9,-44.6C87.7,-31.1,93.5,-15.5,91.8,-0.9C90.1,13.7,80.9,27.3,71.2,39.3C61.4,51.3,51.2,61.7,38.9,70.1C26.5,78.6,13.3,85,-1.3,87.2C-15.8,89.5,-31.7,87.6,-45.5,80.2C-59.3,72.9,-71.1,60,-79.8,45.4C-88.5,30.8,-94.1,15.4,-92.4,0.9C-90.8,-13.5,-81.8,-27,-72.1,-38.3C-62.5,-49.6,-52.1,-58.8,-40.1,-66.6C-28.2,-74.4,-14.1,-80.7,0.7,-82C15.5,-83.2,31.1,-79.5,44.7,-76.4Z" transform="translate(100 100) scale(1.1)" />
-                        </svg>
-                    </div>
                 </div>
 
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-                    
-                    <!-- Left Sidebar (List + AI Picks) -->
                     <div class="lg:col-span-4 space-y-6">
-                        
-                        <!-- My List -->
                         <div class="bg-white rounded-[32px] p-6 md:p-8 border border-slate-200 shadow-sm">
                             <div class="flex justify-between items-center mb-6">
                                 <h3 class="font-bold text-lg text-slate-800 flex items-center gap-2"><i class="fas fa-shopping-cart text-blue-600"></i> My List</h3>
                                 <span class="bg-slate-100 text-slate-600 text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-widest">2 Items</span>
                             </div>
-                            
                             <div class="space-y-4">
                                 <div class="group flex items-center gap-4 p-4 bg-slate-50 rounded-2xl border border-transparent hover:border-blue-200 transition-all cursor-pointer" onclick="drawPath(5)">
                                     <img src="https://images.unsplash.com/photo-1559056199-641a0ac8b55e?auto=format&fit=crop&q=80&w=150" class="w-14 h-14 rounded-xl object-cover shadow-sm border border-slate-200" alt="Coffee">
@@ -124,15 +107,12 @@
                             </div>
                         </div>
 
-                        <!-- AI Picks -->
                         <div class="bg-[#1e3a8a] rounded-[32px] p-6 md:p-8 shadow-xl text-white relative overflow-hidden">
                             <div class="flex items-center gap-2 mb-6 relative z-10">
                                 <i class="fas fa-sparkles text-blue-300"></i>
                                 <h3 class="font-bold text-lg">AI Picks For You</h3>
                             </div>
-                            
                             <div class="space-y-3 relative z-10">
-                                <!-- Pick 1 -->
                                 <div class="group flex items-center gap-4 bg-white/10 p-4 rounded-2xl border border-white/5 hover:bg-white/20 transition-all cursor-pointer" onclick="drawPath(4)">
                                     <img src="https://images.unsplash.com/photo-1596803244618-8dce6f5123f7?auto=format&fit=crop&q=80&w=150" class="w-12 h-12 rounded-xl object-cover shadow-md" alt="Red Bull">
                                     <div class="flex-grow min-w-0">
@@ -145,7 +125,6 @@
                                     </div>
                                     <i class="fas fa-chevron-right text-blue-300 opacity-50 group-hover:opacity-100 group-hover:translate-x-1 transition-all text-xs"></i>
                                 </div>
-                                <!-- Pick 2 -->
                                 <div class="group flex items-center gap-4 bg-white/10 p-4 rounded-2xl border border-white/5 hover:bg-white/20 transition-all cursor-pointer" onclick="drawPath(3)">
                                     <img src="https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?auto=format&fit=crop&q=80&w=150" class="w-12 h-12 rounded-xl object-cover shadow-md" alt="Olive Oil">
                                     <div class="flex-grow min-w-0">
@@ -162,222 +141,144 @@
                         </div>
                     </div>
 
-                    <!-- Right Sidebar (Map) -->
                     <div class="lg:col-span-8 flex flex-col">
-                        <div class="bg-white rounded-[32px] border border-slate-200 shadow-sm flex-1 flex flex-col overflow-hidden">
-                            <div class="p-6 md:p-8 border-b border-slate-100">
-                                <h3 class="font-black text-xl text-slate-800">Store Layout Mapping</h3>
-                                <p class="text-xs font-medium text-slate-500 mt-1">Click aisles to simulate indoor positions</p>
+                        <div class="bg-white rounded-[32px] border border-slate-200 shadow-sm flex-1 flex flex-col overflow-hidden p-6 md:p-8">
+                            <div class="border-b border-slate-100 pb-6 mb-6 flex justify-between items-center">
+                                <div>
+                                    <h3 class="font-black text-xl text-slate-800">Store Layout Mapping</h3>
+                                    <p class="text-xs font-medium text-slate-500 mt-1">Click aisles to simulate indoor positions</p>
+                                </div>
+                                <button id="stop-nav-btn" onclick="stopNavigation()" class="hidden bg-red-50 hover:bg-red-100 text-red-600 border border-red-100 px-4 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest transition-colors">Stop</button>
                             </div>
                             
-                            <!-- Interactive SVG Map -->
-                            <div class="flex-1 bg-slate-50 p-6 flex items-center justify-center min-h-[400px] relative">
-                                <svg viewBox="0 0 800 500" class="w-full max-w-3xl drop-shadow-xl" id="storeMap">
-                                    <!-- Map Background -->
+                            <div class="bg-slate-50 rounded-[24px] p-6 flex items-center justify-center min-h-[350px] relative border border-slate-100">
+                                <svg viewBox="0 0 800 500" class="w-full max-w-2xl drop-shadow-lg" id="storeMap">
                                     <rect x="0" y="0" width="800" height="500" fill="#ffffff" rx="24" stroke="#e2e8f0" stroke-width="2"/>
                                     
-                                    <!-- Aisles 1 to 5 -->
-                                    <g onclick="drawPath(1)">
-                                        <rect id="aisle-1" x="100" y="80" width="60" height="300" rx="10" class="aisle-rect fill-slate-100" />
-                                        <text x="135" y="230" fill="#94a3b8" font-size="12" font-weight="bold" transform="rotate(-90, 130, 230)" class="pointer-events-none tracking-widest">AISLE 1</text>
-                                    </g>
-                                    <g onclick="drawPath(2)">
-                                        <rect id="aisle-2" x="220" y="80" width="60" height="300" rx="10" class="aisle-rect fill-slate-100" />
-                                        <text x="255" y="230" fill="#94a3b8" font-size="12" font-weight="bold" transform="rotate(-90, 250, 230)" class="pointer-events-none tracking-widest">AISLE 2</text>
-                                    </g>
-                                    <g onclick="drawPath(3)">
-                                        <rect id="aisle-3" x="340" y="80" width="60" height="300" rx="10" class="aisle-rect fill-slate-100" />
-                                        <text x="375" y="230" fill="#94a3b8" font-size="12" font-weight="bold" transform="rotate(-90, 370, 230)" class="pointer-events-none tracking-widest">AISLE 3</text>
-                                    </g>
-                                    <g onclick="drawPath(4)">
-                                        <rect id="aisle-4" x="460" y="80" width="60" height="300" rx="10" class="aisle-rect fill-slate-100" />
-                                        <text x="495" y="230" fill="#94a3b8" font-size="12" font-weight="bold" transform="rotate(-90, 490, 230)" class="pointer-events-none tracking-widest">AISLE 4</text>
-                                    </g>
-                                    <g onclick="drawPath(5)">
-                                        <rect id="aisle-5" x="580" y="80" width="60" height="300" rx="10" class="aisle-rect fill-slate-100" />
-                                        <text x="615" y="230" fill="#94a3b8" font-size="12" font-weight="bold" transform="rotate(-90, 610, 230)" class="pointer-events-none tracking-widest">AISLE 5</text>
-                                    </g>
+                                    <g onclick="drawPath(1)"><rect id="aisle-1" x="100" y="80" width="60" height="300" rx="10" class="aisle-rect fill-slate-100" /><text x="135" y="230" fill="#94a3b8" font-size="12" font-weight="bold" transform="rotate(-90, 130, 230)" class="pointer-events-none tracking-widest">AISLE 1</text></g>
+                                    <g onclick="drawPath(2)"><rect id="aisle-2" x="220" y="80" width="60" height="300" rx="10" class="aisle-rect fill-slate-100" /><text x="255" y="230" fill="#94a3b8" font-size="12" font-weight="bold" transform="rotate(-90, 250, 230)" class="pointer-events-none tracking-widest">AISLE 2</text></g>
+                                    <g onclick="drawPath(3)"><rect id="aisle-3" x="340" y="80" width="60" height="300" rx="10" class="aisle-rect fill-slate-100" /><text x="375" y="230" fill="#94a3b8" font-size="12" font-weight="bold" transform="rotate(-90, 370, 230)" class="pointer-events-none tracking-widest">AISLE 3</text></g>
+                                    <g onclick="drawPath(4)"><rect id="aisle-4" x="460" y="80" width="60" height="300" rx="10" class="aisle-rect fill-slate-100" /><text x="495" y="230" fill="#94a3b8" font-size="12" font-weight="bold" transform="rotate(-90, 490, 230)" class="pointer-events-none tracking-widest">AISLE 4</text></g>
+                                    <g onclick="drawPath(5)"><rect id="aisle-5" x="580" y="80" width="60" height="300" rx="10" class="aisle-rect fill-slate-100" /><text x="615" y="230" fill="#94a3b8" font-size="12" font-weight="bold" transform="rotate(-90, 610, 230)" class="pointer-events-none tracking-widest">AISLE 5</text></g>
 
-                                    <!-- Dairy Sub-Zone -->
                                     <rect x="100" y="420" width="540" height="50" rx="12" fill="#eff6ff" stroke="#bfdbfe" stroke-width="2" />
                                     <text x="370" y="450" fill="#3b82f6" font-size="14" font-weight="bold" class="tracking-widest pointer-events-none">DAIRY & FROZEN SUB-ZONE</text>
 
-                                    <!-- Dynamic Path (Hidden by default) -->
-                                    <path id="nav-path" d="" fill="none" stroke="#3b82f6" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" class="path-line hidden" />
-
-                                    <!-- User Start Point (Dot) -->
-                                    <circle id="user-dot" cx="400" cy="480" r="8" fill="#ef4444" stroke="#ffffff" stroke-width="3" class="hidden" />
+                                    <path id="nav-path" d="" fill="none" stroke="#3b82f6" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" class="path-line hidden" />
+                                    <circle id="start-dot" cx="400" cy="480" r="8" fill="#3b82f6" stroke="#ffffff" stroke-width="3" class="hidden" />
+                                    <circle id="end-dot" cx="0" cy="150" r="10" fill="#ef4444" stroke="#ffffff" stroke-width="3" class="hidden" />
                                 </svg>
                             </div>
+
+                            <div class="mt-6 flex flex-col items-center">
+                                <input type="text" id="map-start-point" oninput="handleStartInput()" placeholder="Enter Starting Point here... (e.g., Cashier 2)" class="w-full max-w-md bg-slate-50 border border-slate-200 rounded-xl py-3 px-4 text-sm font-bold text-slate-800 text-center focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors placeholder:font-medium">
+                                <p id="map-warning" class="text-red-500 text-xs font-bold mt-2 hidden transition-all animate-pulse">Please enter Starting Point to see the path</p>
+                            </div>
+
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- ========================================== -->
-            <!-- 2. EMPLOYEE VIEW -->
-            <!-- ========================================== -->
             <div id="view-employee" class="hidden space-y-6 animate-fade-in">
-                
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
                     
-                    <!-- Left Column -->
                     <div class="lg:col-span-4 space-y-6">
-                        <!-- Shift Info -->
                         <div class="bg-blue-600 rounded-[32px] p-8 text-white shadow-lg relative overflow-hidden">
                             <p class="text-[10px] font-bold uppercase tracking-widest opacity-80 mb-2">Morning Shift</p>
-                            <h2 class="text-3xl font-black mb-8">Active Duty</h2>
-                            
+                            <h2 class="text-3xl font-black mb-8 italic">Active Duty</h2>
                             <div class="space-y-3">
                                 <div class="bg-white/10 rounded-2xl p-4 flex items-center justify-between backdrop-blur-sm border border-white/10">
-                                    <div class="flex items-center gap-3">
-                                        <i class="far fa-clock text-blue-200"></i>
-                                        <div>
-                                            <p class="text-[9px] uppercase tracking-widest opacity-80">Shift Ends In</p>
-                                            <p class="font-black text-lg">04:42:10</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="bg-white/10 rounded-2xl p-4 flex items-center justify-between backdrop-blur-sm border border-white/10">
-                                    <div class="flex items-center gap-3">
-                                        <i class="fas fa-coffee text-blue-200"></i>
-                                        <div>
-                                            <p class="text-[9px] uppercase tracking-widest opacity-80">Next Break</p>
-                                            <p class="font-black text-lg">01:00 PM</p>
-                                        </div>
-                                    </div>
+                                    <div class="flex items-center gap-3"><i class="far fa-clock text-blue-200"></i><div><p class="text-[9px] uppercase tracking-widest opacity-80">Shift Ends In</p><p class="font-black text-lg">04:42:10</p></div></div>
                                 </div>
                             </div>
-                            <!-- Background Icon -->
-                            <i class="fas fa-user-shield absolute -bottom-10 -right-10 text-8xl opacity-10"></i>
                         </div>
 
-                        <!-- Operations Center -->
                         <div class="bg-white rounded-[32px] p-6 border border-slate-200 shadow-sm">
                             <h3 class="font-black text-lg text-slate-800 mb-4">Operations Center</h3>
                             <div class="grid grid-cols-2 gap-4">
                                 <button class="bg-slate-50 border border-slate-200 rounded-2xl p-4 flex flex-col items-center justify-center gap-3 hover:bg-red-50 hover:border-red-200 hover:text-red-600 transition-all group">
-                                    <i class="fas fa-exclamation-triangle text-red-500 text-xl group-hover:scale-110 transition-transform"></i>
-                                    <span class="text-[10px] font-bold uppercase tracking-widest text-slate-600 group-hover:text-red-600">Report Error</span>
+                                    <i class="fas fa-exclamation-triangle text-red-500 text-xl group-hover:scale-110 transition-transform"></i><span class="text-[10px] font-bold uppercase tracking-widest text-slate-600 group-hover:text-red-600">Report Error</span>
                                 </button>
                                 <button class="bg-slate-50 border border-slate-200 rounded-2xl p-4 flex flex-col items-center justify-center gap-3 hover:bg-blue-50 hover:border-blue-200 hover:text-blue-600 transition-all group">
-                                    <i class="fas fa-box text-blue-500 text-xl group-hover:scale-110 transition-transform"></i>
-                                    <span class="text-[10px] font-bold uppercase tracking-widest text-slate-600 group-hover:text-blue-600">Audit Aisle</span>
+                                    <i class="fas fa-box text-blue-500 text-xl group-hover:scale-110 transition-transform"></i><span class="text-[10px] font-bold uppercase tracking-widest text-slate-600 group-hover:text-blue-600">Audit Aisle</span>
                                 </button>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Right Column: Tasks -->
                     <div class="lg:col-span-8">
                         <div class="bg-white rounded-[32px] p-8 md:p-10 border border-slate-200 shadow-sm h-full">
                             <div class="flex justify-between items-start mb-8">
                                 <div>
-                                    <h2 class="text-2xl font-black uppercase text-slate-900 tracking-tight">Daily Tasks Schedule</h2>
+                                    <h2 class="text-2xl font-black uppercase text-slate-900 tracking-tight italic">Daily Tasks Schedule</h2>
                                     <p class="text-xs text-slate-500 mt-1 font-medium">Real-time task assignments from system AI</p>
                                 </div>
                                 <span class="bg-blue-50 text-blue-600 font-black text-[10px] px-4 py-2 rounded-full uppercase tracking-widest">2 Pending</span>
                             </div>
 
-                            <!-- Timeline -->
                             <div class="relative border-l-2 border-slate-100 ml-4 space-y-8 pb-4">
-                                
-                                <!-- Task 1 -->
-                                <div class="relative pl-8">
+                                <div class="relative pl-8 cursor-pointer" onclick="openTaskModal(101)">
                                     <div class="absolute -left-[9px] top-2 w-4 h-4 bg-blue-600 rounded-full border-4 border-white shadow-sm"></div>
-                                    <div class="bg-white border border-slate-200 rounded-[24px] p-6 shadow-sm hover:shadow-md hover:border-blue-300 transition-all">
+                                    <div class="bg-white border border-slate-200 rounded-[24px] p-6 shadow-sm hover:shadow-md hover:border-blue-300 transition-all group">
                                         <div class="flex justify-between items-center mb-4">
                                             <span class="bg-slate-100 text-slate-500 text-[10px] font-black px-3 py-1 rounded-lg">09:00 AM</span>
                                         </div>
                                         <h4 class="text-xl font-black text-slate-800 mb-2">Morning Stock Verification</h4>
                                         <p class="text-xs text-slate-500 font-semibold mb-4 flex items-center gap-2"><i class="fas fa-map-marker-alt text-slate-400"></i> Aisle 2 (Pasta & Grains)</p>
-                                        <button class="text-blue-600 text-sm font-bold flex items-center gap-2 hover:gap-3 transition-all">
-                                            View Procedures <i class="fas fa-arrow-right"></i>
-                                        </button>
+                                        <button class="text-blue-600 text-sm font-bold flex items-center gap-2 group-hover:gap-3 transition-all">View Procedures <i class="fas fa-arrow-right"></i></button>
                                     </div>
                                 </div>
-
-                                <!-- Task 2 -->
-                                <div class="relative pl-8">
+                                <div class="relative pl-8 cursor-pointer" onclick="openTaskModal(102)">
                                     <div class="absolute -left-[9px] top-2 w-4 h-4 bg-blue-600 rounded-full border-4 border-white shadow-sm"></div>
-                                    <div class="bg-white border border-slate-200 rounded-[24px] p-6 shadow-sm hover:shadow-md hover:border-blue-300 transition-all">
+                                    <div class="bg-white border border-slate-200 rounded-[24px] p-6 shadow-sm hover:shadow-md hover:border-blue-300 transition-all group">
                                         <div class="flex justify-between items-center mb-4">
                                             <span class="bg-slate-100 text-slate-500 text-[10px] font-black px-3 py-1 rounded-lg">11:30 AM</span>
                                             <span class="bg-red-500 text-white text-[10px] font-black px-3 py-1 rounded-lg shadow-sm">URGENT ALERT</span>
                                         </div>
                                         <h4 class="text-xl font-black text-slate-800 mb-2">Restock Alert Response</h4>
                                         <p class="text-xs text-slate-500 font-semibold mb-4 flex items-center gap-2"><i class="fas fa-map-marker-alt text-slate-400"></i> Dairy Section</p>
-                                        <button class="text-blue-600 text-sm font-bold flex items-center gap-2 hover:gap-3 transition-all">
-                                            View Procedures <i class="fas fa-arrow-right"></i>
-                                        </button>
+                                        <button class="text-blue-600 text-sm font-bold flex items-center gap-2 group-hover:gap-3 transition-all">View Procedures <i class="fas fa-arrow-right"></i></button>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
 
-            <!-- ========================================== -->
-            <!-- 3. MANAGER VIEW -->
-            <!-- ========================================== -->
             <div id="view-manager" class="hidden space-y-6 animate-fade-in">
-                
-                <!-- Top Metrics -->
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                     <div class="bg-white p-6 rounded-[24px] border border-slate-200 shadow-sm">
                         <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Total Visitors</p>
-                        <h4 class="text-3xl font-black text-slate-800">1,284</h4>
+                        <h4 class="text-3xl font-black text-slate-800 italic">1,284</h4>
                         <p class="text-[10px] font-bold text-green-500 mt-2"><i class="fas fa-arrow-trend-up"></i> +12%</p>
                     </div>
                     <div class="bg-white p-6 rounded-[24px] border border-slate-200 shadow-sm">
                         <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">AI Recommendation Match</p>
-                        <h4 class="text-3xl font-black text-slate-800">94.2%</h4>
-                        <p class="text-[10px] font-bold text-orange-500 mt-2"><i class="fas fa-sparkles"></i> Optimized</p>
+                        <h4 class="text-3xl font-black text-slate-800 italic">94.2%</h4>
+                        <p class="text-[10px] font-bold text-blue-500 mt-2"><i class="fas fa-sparkles"></i> Optimized</p>
                     </div>
                     <div class="bg-white p-6 rounded-[24px] border border-slate-200 shadow-sm">
                         <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Avg Search Time</p>
-                        <h4 class="text-3xl font-black text-slate-800">1m 12s</h4>
+                        <h4 class="text-3xl font-black text-slate-800 italic">1m 12s</h4>
                         <p class="text-[10px] font-bold text-red-500 mt-2"><i class="fas fa-arrow-trend-up"></i> +4s bottleneck</p>
                     </div>
                     <div class="bg-white p-6 rounded-[24px] border border-slate-200 shadow-sm">
                         <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Sync Nodes</p>
-                        <h4 class="text-3xl font-black text-slate-800">18/18</h4>
+                        <h4 class="text-3xl font-black text-slate-800 italic">18/18</h4>
                         <p class="text-[10px] font-bold text-green-500 mt-2"><i class="fas fa-check-circle"></i> All Online</p>
                     </div>
                 </div>
 
-                <!-- Middle Areas -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div class="bg-white p-8 rounded-[32px] border border-slate-200 shadow-sm flex items-center justify-between">
-                        <div>
-                            <span class="inline-block bg-green-100 text-green-600 text-[10px] font-black px-3 py-1 rounded-full mb-3"><i class="fas fa-arrow-trend-up mr-1"></i> MONTHLY PEAK AREA</span>
-                            <h3 class="text-2xl font-black text-slate-800">Aisle 2: Pasta & Grain</h3>
-                            <p class="text-xs font-bold text-green-600 mt-1">15,420 High-yield visits</p>
-                        </div>
-                        <div class="w-16 h-16 bg-green-50 rounded-full flex items-center justify-center text-2xl font-black text-green-300">#1</div>
-                    </div>
-                    <div class="bg-white p-8 rounded-[32px] border border-slate-200 shadow-sm flex items-center justify-between">
-                        <div>
-                            <span class="inline-block bg-red-100 text-red-600 text-[10px] font-black px-3 py-1 rounded-full mb-3"><i class="fas fa-arrow-trend-down mr-1"></i> UNDERUTILIZED AREA</span>
-                            <h3 class="text-2xl font-black text-slate-800">Aisle 4: Household</h3>
-                            <p class="text-xs font-bold text-red-500 mt-1">3,105 Low-interest visits</p>
-                        </div>
-                        <div class="w-16 h-16 bg-red-50 rounded-full flex items-center justify-center text-2xl font-black text-red-300">#5</div>
-                    </div>
-                </div>
-
-                <!-- Heatmap Section -->
                 <div class="bg-white rounded-[32px] p-8 border border-slate-200 shadow-sm">
                     <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 gap-4">
                         <div>
-                            <h3 class="text-2xl font-black text-slate-900">Customer Density Heatmap</h3>
+                            <h3 class="text-2xl font-black text-slate-900 italic">Traffic Density Engine</h3>
                             <p class="text-xs text-slate-500 font-medium">Live visualization of floor traffic patterns</p>
                         </div>
-                        <button class="bg-[#0f172a] text-white px-6 py-3 rounded-xl text-xs font-bold shadow-lg hover:bg-slate-800 transition-colors flex items-center gap-2">
-                            <i class="fas fa-sparkles text-yellow-400"></i> AI Optimizer Layout
+                        <button class="bg-[#0f172a] text-white px-6 py-3 rounded-xl text-xs font-bold shadow-lg hover:bg-slate-800 transition-colors flex items-center gap-2 uppercase tracking-widest">
+                            <i class="fas fa-sparkles text-yellow-400"></i> AI Optimize
                         </button>
                     </div>
 
@@ -386,138 +287,243 @@
                             <div class="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
                             <span class="text-[10px] font-black uppercase tracking-widest text-slate-600">Live Sensory Stream</span>
                         </div>
-
-                        <!-- Heatmap Grid Simulation -->
                         <div class="w-full max-w-2xl h-[250px] flex gap-4 mt-6">
-                            <!-- Col 1 -->
-                            <div class="flex-1 flex flex-col gap-3 opacity-60"><div class="flex-1 bg-green-300 rounded-xl"></div><div class="flex-1 bg-green-300 rounded-xl"></div><div class="flex-1 bg-green-300 rounded-xl"></div><div class="flex-1 bg-green-300 rounded-xl"></div></div>
-                            <!-- Col 2 -->
-                            <div class="flex-1 flex flex-col gap-3 opacity-90"><div class="flex-1 bg-red-500 rounded-xl shadow-[0_0_15px_rgba(239,68,68,0.5)]"></div><div class="flex-1 bg-red-500 rounded-xl shadow-[0_0_15px_rgba(239,68,68,0.5)]"></div><div class="flex-1 bg-red-500 rounded-xl shadow-[0_0_15px_rgba(239,68,68,0.5)]"></div><div class="flex-1 bg-red-500 rounded-xl shadow-[0_0_15px_rgba(239,68,68,0.5)]"></div></div>
-                            <!-- Col 3 -->
-                            <div class="flex-1 flex flex-col gap-3 opacity-80"><div class="flex-1 bg-green-400 rounded-xl"></div><div class="flex-1 bg-green-400 rounded-xl"></div><div class="flex-1 bg-orange-400 rounded-xl"></div><div class="flex-1 bg-green-400 rounded-xl"></div></div>
-                            <!-- Col 4 -->
-                            <div class="flex-1 flex flex-col gap-3 opacity-50"><div class="flex-1 bg-green-200 rounded-xl"></div><div class="flex-1 bg-green-200 rounded-xl"></div><div class="flex-1 bg-green-200 rounded-xl"></div><div class="flex-1 bg-green-200 rounded-xl"></div></div>
-                            <!-- Col 5 -->
-                            <div class="flex-1 flex flex-col gap-3 opacity-80"><div class="flex-1 bg-orange-400 rounded-xl"></div><div class="flex-1 bg-orange-400 rounded-xl"></div><div class="flex-1 bg-red-400 rounded-xl"></div><div class="flex-1 bg-orange-400 rounded-xl"></div></div>
-                        </div>
-
-                        <!-- Legend -->
-                        <div class="absolute bottom-6 right-6 bg-white p-4 rounded-xl border border-slate-200 shadow-md">
-                            <p class="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-2">Traffic Status</p>
-                            <div class="space-y-2">
-                                <div class="flex items-center gap-2"><div class="w-3 h-3 rounded-full bg-red-500"></div><span class="text-xs font-bold text-slate-600">Very High (Bottleneck)</span></div>
-                                <div class="flex items-center gap-2"><div class="w-3 h-3 rounded-full bg-orange-400"></div><span class="text-xs font-bold text-slate-600">High (High Yield)</span></div>
-                                <div class="flex items-center gap-2"><div class="w-3 h-3 rounded-full bg-green-400"></div><span class="text-xs font-bold text-slate-600">Low (Clearance Area)</span></div>
-                            </div>
+                            <div class="flex-1 flex flex-col gap-3 opacity-60"><div class="flex-1 bg-green-400 rounded-xl"></div><div class="flex-1 bg-green-400 rounded-xl"></div><div class="flex-1 bg-green-400 rounded-xl"></div></div>
+                            <div class="flex-1 flex flex-col gap-3 opacity-90"><div class="flex-1 bg-red-500 rounded-xl"></div><div class="flex-1 bg-red-500 rounded-xl"></div><div class="flex-1 bg-red-500 rounded-xl"></div></div>
+                            <div class="flex-1 flex flex-col gap-3 opacity-80"><div class="flex-1 bg-orange-400 rounded-xl"></div><div class="flex-1 bg-orange-400 rounded-xl"></div><div class="flex-1 bg-green-400 rounded-xl"></div></div>
+                            <div class="flex-1 flex flex-col gap-3 opacity-50"><div class="flex-1 bg-green-300 rounded-xl"></div><div class="flex-1 bg-green-300 rounded-xl"></div><div class="flex-1 bg-green-300 rounded-xl"></div></div>
+                            <div class="flex-1 flex flex-col gap-3 opacity-80"><div class="flex-1 bg-orange-400 rounded-xl"></div><div class="flex-1 bg-red-400 rounded-xl"></div><div class="flex-1 bg-orange-400 rounded-xl"></div></div>
                         </div>
                     </div>
                 </div>
-
-                <!-- AI Metadata Table -->
-                <div class="bg-white rounded-[32px] p-8 border border-slate-200 shadow-sm overflow-hidden">
-                    <h3 class="text-xl font-black text-slate-900 mb-6">AI METADATA TUNING</h3>
-                    <div class="overflow-x-auto">
-                        <table class="w-full text-left border-collapse">
-                            <thead>
-                                <tr class="border-b border-slate-100 text-[10px] font-black uppercase text-slate-400 tracking-widest">
-                                    <th class="py-4 px-4">Preview</th>
-                                    <th class="py-4 px-4">Product</th>
-                                    <th class="py-4 px-4">AI Reason</th>
-                                    <th class="py-4 px-4 text-right">Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr class="border-b border-slate-50 hover:bg-slate-50 transition-colors">
-                                    <td class="py-4 px-4"><img src="https://images.unsplash.com/photo-1559056199-641a0ac8b55e?auto=format&fit=crop&q=80&w=150" class="w-12 h-12 rounded-xl object-cover border" alt="Item"></td>
-                                    <td class="py-4 px-4 font-bold text-sm text-slate-800">Premium Roasted Coffee</td>
-                                    <td class="py-4 px-4 text-xs text-slate-500">Pairs with morning routine</td>
-                                    <td class="py-4 px-4 text-right text-slate-400">
-                                        <button class="p-2 hover:text-blue-600"><i class="fas fa-edit"></i></button>
-                                        <button class="p-2 hover:text-red-600"><i class="fas fa-trash"></i></button>
-                                    </td>
-                                </tr>
-                                <tr class="border-b border-slate-50 hover:bg-slate-50 transition-colors">
-                                    <td class="py-4 px-4"><img src="https://images.unsplash.com/photo-1596803244618-8dce6f5123f7?auto=format&fit=crop&q=80&w=150" class="w-12 h-12 rounded-xl object-cover border" alt="Item"></td>
-                                    <td class="py-4 px-4 font-bold text-sm text-slate-800">Red Bull Energy Drink</td>
-                                    <td class="py-4 px-4 text-xs text-slate-500">High energy boost</td>
-                                    <td class="py-4 px-4 text-right text-slate-400">
-                                        <button class="p-2 hover:text-blue-600"><i class="fas fa-edit"></i></button>
-                                        <button class="p-2 hover:text-red-600"><i class="fas fa-trash"></i></button>
-                                    </td>
-                                </tr>
-                                <tr class="hover:bg-slate-50 transition-colors">
-                                    <td class="py-4 px-4"><img src="https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?auto=format&fit=crop&q=80&w=150" class="w-12 h-12 rounded-xl object-cover border" alt="Item"></td>
-                                    <td class="py-4 px-4 font-bold text-sm text-slate-800">Extra Virgin Olive Oil</td>
-                                    <td class="py-4 px-4 text-xs text-slate-500">Premium alternative</td>
-                                    <td class="py-4 px-4 text-right text-slate-400">
-                                        <button class="p-2 hover:text-blue-600"><i class="fas fa-edit"></i></button>
-                                        <button class="p-2 hover:text-red-600"><i class="fas fa-trash"></i></button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-
             </div>
 
         </div>
     </main>
 
-    <!-- LOGIC SCRIPT -->
+    <div id="task-modal" class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-[100] hidden flex-col justify-end">
+        <div class="flex-1 w-full cursor-pointer" onclick="closeTaskModal()"></div>
+        
+        <div class="bg-white rounded-t-[40px] p-8 w-full max-w-2xl mx-auto h-[80vh] flex flex-col transform transition-transform translate-y-full duration-300 shadow-2xl" id="task-modal-content">
+            
+            <div class="flex justify-between items-start mb-6 border-b border-slate-100 pb-6">
+                <div>
+                    <p class="text-[10px] font-black text-blue-600 uppercase tracking-widest mb-1">Standard Procedure</p>
+                    <h3 class="text-3xl font-black text-slate-900 italic" id="modal-task-title">Task Title</h3>
+                </div>
+                <button onclick="closeTaskModal()" class="p-3 bg-slate-100 hover:bg-slate-200 text-slate-500 rounded-xl transition-colors"><i class="fas fa-times text-lg"></i></button>
+            </div>
+            
+            <div class="flex-grow overflow-y-auto space-y-3 pr-2 custom-scrollbar" id="modal-task-steps">
+                </div>
+            
+            <button id="complete-btn" onclick="completeTask()" class="w-full mt-6 py-5 bg-green-500 hover:bg-green-600 text-white rounded-[24px] font-black text-sm uppercase tracking-widest shadow-lg hover:shadow-xl transition-all flex items-center justify-center gap-2">
+                <i class="fas fa-check-circle text-lg" id="complete-btn-icon"></i> 
+                <span id="complete-btn-text">Verify & Complete</span>
+            </button>
+        </div>
+    </div>
+
+
     <script>
-        // Tab Switching Logic
+        // --- 1. Tab Switching ---
         function switchTab(tabId) {
-            // Hide all views
             document.getElementById('view-shopper').classList.add('hidden');
             document.getElementById('view-employee').classList.add('hidden');
             document.getElementById('view-manager').classList.add('hidden');
-            
-            // Show selected view
             document.getElementById('view-' + tabId).classList.remove('hidden');
 
-            // Reset all buttons styles
             const btns = document.querySelectorAll('.tab-btn');
             btns.forEach(btn => {
                 btn.classList.remove('bg-white', 'text-blue-600', 'shadow-sm');
                 btn.classList.add('text-slate-500');
             });
-
-            // Set active button style
             const activeBtn = document.getElementById('tab-' + tabId);
             activeBtn.classList.remove('text-slate-500');
             activeBtn.classList.add('bg-white', 'text-blue-600', 'shadow-sm');
 
-            // Update user role text
             document.getElementById('user-role-label').innerText = tabId;
         }
 
-        // Map Navigation Logic
+        // --- 2. Map Navigation & Start Point Logic ---
+        let currentActiveAisle = null;
+
+        function handleStartInput() {
+            if (currentActiveAisle !== null) {
+                drawPath(currentActiveAisle);
+            }
+        }
+
         function drawPath(aisleNum) {
-            // Reset colors
+            currentActiveAisle = aisleNum;
+            const startInput = document.getElementById('map-start-point').value.trim();
+            const warningText = document.getElementById('map-warning');
+            const stopBtn = document.getElementById('stop-nav-btn');
+            
+            const path = document.getElementById('nav-path');
+            const startDot = document.getElementById('start-dot');
+            const endDot = document.getElementById('end-dot');
+
+            // Reset aisle colors
             const aisles = document.querySelectorAll('.aisle-rect');
             aisles.forEach(a => a.classList.remove('aisle-active'));
             
             // Highlight selected aisle
             const selectedAisle = document.getElementById('aisle-' + aisleNum);
             if(selectedAisle) selectedAisle.classList.add('aisle-active');
+            stopBtn.classList.remove('hidden');
 
-            // Show Path and Dot
-            const path = document.getElementById('nav-path');
-            const dot = document.getElementById('user-dot');
+            // Check Start Point Input
+            if (startInput === '') {
+                warningText.classList.remove('hidden');
+                path.classList.add('hidden');
+                startDot.classList.add('hidden');
+                endDot.classList.add('hidden');
+                return; // Stop drawing
+            } else {
+                warningText.classList.add('hidden');
+            }
             
-            // Basic coordinate math based on SVG
-            // X coordinates for aisles: 100, 220, 340, 460, 580
-            const targetX = 100 + ((aisleNum - 1) * 120) + 30; // Center of the aisle
-            
+            // Draw Path & Dots
+            const targetX = 100 + ((aisleNum - 1) * 120) + 30; 
+            endDot.setAttribute('cx', targetX);
+
             path.setAttribute('d', `M 400 480 L 400 400 L ${targetX} 400 L ${targetX} 230`);
+            
             path.classList.remove('hidden');
-            dot.classList.remove('hidden');
+            startDot.classList.remove('hidden');
+            endDot.classList.remove('hidden');
         }
 
-        // Add simple animation style via script
-        document.head.insertAdjacentHTML('beforeend', '<style>.animate-fade-in { animation: fadeIn 0.5s ease-out forwards; } @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }</style>');
+        function stopNavigation() {
+            currentActiveAisle = null;
+            document.getElementById('map-start-point').value = '';
+            document.getElementById('map-warning').classList.add('hidden');
+            document.getElementById('stop-nav-btn').classList.add('hidden');
+            document.getElementById('nav-path').classList.add('hidden');
+            document.getElementById('start-dot').classList.add('hidden');
+            document.getElementById('end-dot').classList.add('hidden');
+            const aisles = document.querySelectorAll('.aisle-rect');
+            aisles.forEach(a => a.classList.remove('aisle-active'));
+        }
 
+        // --- 3. Employee Task Modal Logic ---
+        const taskData = {
+            101: { title: 'Morning Stock Verification', steps: ['Scan shelf tags', 'Verify count', 'Rotate FIFO stock'] },
+            102: { title: 'Restock Alert Response', steps: ['Collect crates', 'Check fridge temp', 'Refill milk/yogurt'] }
+        };
+
+        function openTaskModal(taskId) {
+            const task = taskData[taskId];
+            document.getElementById('modal-task-title').innerText = task.title;
+            
+            const stepsContainer = document.getElementById('modal-task-steps');
+            stepsContainer.innerHTML = '';
+            
+            // Generate Checkbox Items
+            task.steps.forEach((step, idx) => {
+                stepsContainer.innerHTML += `
+                    <div class="step-item flex items-center justify-between p-5 bg-slate-50 rounded-[20px] border border-slate-100 cursor-pointer transition-all hover:border-blue-200" onclick="toggleStep(this)">
+                        <div class="flex items-center gap-4 pointer-events-none">
+                            <div class="step-num w-10 h-10 bg-slate-900 text-white rounded-[14px] flex items-center justify-center font-black text-sm transition-colors">${idx + 1}</div>
+                            <p class="step-text font-bold text-[15px] text-slate-700 transition-colors">${step}</p>
+                        </div>
+                        <i class="step-icon far fa-circle text-slate-300 text-[28px] transition-colors pointer-events-none"></i>
+                    </div>
+                `;
+            });
+
+            // Show Modal with Animation
+            const modal = document.getElementById('task-modal');
+            const content = document.getElementById('task-modal-content');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            setTimeout(() => { content.classList.remove('translate-y-full'); }, 10);
+            
+            resetCompleteButton();
+        }
+
+        function closeTaskModal() {
+            const modal = document.getElementById('task-modal');
+            const content = document.getElementById('task-modal-content');
+            content.classList.add('translate-y-full');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+            }, 300);
+        }
+
+        // Checkbox Toggle Animation
+        function toggleStep(element) {
+            // Background & Border
+            element.classList.toggle('bg-green-50');
+            element.classList.toggle('border-green-200');
+            element.classList.toggle('bg-slate-50');
+            element.classList.toggle('border-slate-100');
+            
+            // Number Block
+            const num = element.querySelector('.step-num');
+            num.classList.toggle('bg-slate-900');
+            num.classList.toggle('bg-green-500');
+
+            // Text Strike-through
+            const text = element.querySelector('.step-text');
+            text.classList.toggle('line-through');
+            text.classList.toggle('text-slate-400');
+            text.classList.toggle('text-slate-700');
+
+            // Icon change (Circle -> Check Circle)
+            const icon = element.querySelector('.step-icon');
+            icon.classList.toggle('far');
+            icon.classList.toggle('fa-circle');
+            icon.classList.toggle('text-slate-300');
+            
+            icon.classList.toggle('fas');
+            icon.classList.toggle('fa-check-circle');
+            icon.classList.toggle('text-green-500');
+        }
+
+        // Loading & Done State for Button
+        function completeTask() {
+            const btn = document.getElementById('complete-btn');
+            const icon = document.getElementById('complete-btn-icon');
+            const text = document.getElementById('complete-btn-text');
+
+            // Prevent double click
+            if(btn.disabled) return;
+            btn.disabled = true;
+
+            // 1. Loading State
+            btn.classList.add('opacity-80', 'cursor-not-allowed');
+            icon.className = 'fas fa-spinner fa-spin text-lg';
+            text.innerText = 'Processing...';
+
+            // 2. Simulate API Call delay (1.5s)
+            setTimeout(() => {
+                // Done State
+                btn.classList.remove('bg-green-500', 'hover:bg-green-600', 'opacity-80', 'cursor-not-allowed');
+                btn.classList.add('bg-blue-600', 'hover:bg-blue-700');
+                icon.className = 'fas fa-check text-lg';
+                text.innerText = 'DONE';
+
+                // 3. Auto Close Modal after showing 'DONE' (0.8s)
+                setTimeout(() => {
+                    closeTaskModal();
+                }, 800);
+
+            }, 1500);
+        }
+        
+        function resetCompleteButton() {
+            const btn = document.getElementById('complete-btn');
+            const icon = document.getElementById('complete-btn-icon');
+            const text = document.getElementById('complete-btn-text');
+            
+            btn.disabled = false;
+            btn.className = 'w-full mt-6 py-5 bg-green-500 hover:bg-green-600 text-white rounded-[24px] font-black text-sm uppercase tracking-widest shadow-lg hover:shadow-xl transition-all flex items-center justify-center gap-2';
+            icon.className = 'fas fa-check-circle text-lg';
+            text.innerText = 'Verify & Complete';
+        }
     </script>
 </body>
 </html>
